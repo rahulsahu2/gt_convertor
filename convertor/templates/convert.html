@@ -1,5 +1,5 @@
 <!-- templates/upload_receipt_file.html -->
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -63,6 +63,7 @@
                                 <tr>
                                     <th>Filename</th>
                                     <th>Uploaded At</th>
+                                    <th>Output</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,6 +71,7 @@
                                 <tr>
                                     <td>{{ receipt_file.file.name }}</td>
                                     <td>{{ receipt_file.uploaded_at }}</td>
+                                    <td><a class="listData" href="{{ receipt_file.converted_csv }}">Result</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -85,5 +87,24 @@
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Get all anchor tags with class "listData"
+                var anchorTags = document.querySelectorAll('.listData');
+
+                // Iterate over the anchor tags
+                anchorTags.forEach(function (anchorTag) {
+                    // Get the current href attribute value                    
+                    var currentHref = anchorTag.getAttribute('href');
+                    console.log(currentHref);
+                    // Replace "upload" with "media" in the href attribute
+                    var newHref = window.location.origin + "/media/" + currentHref;
+
+                    // Update the href attribute with the new value
+                    anchorTag.setAttribute('href', newHref);
+                });
+            });
+        </script>
     </body>
 </html>

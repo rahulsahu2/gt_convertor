@@ -14,6 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'upload/receipts/converted_csv/receipts')]
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +26,10 @@ SECRET_KEY = 'django-insecure-_j5ddm-2s5!gwfb&re@^@=gbpe4r9su882gg5l*xtiosj)n5=-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '5b0d-2405-201-6011-9844-ace9-e80-5f18-9edd.ngrok-free.app',
+    '127.0.0.1'
+]
 
 
 # Application definition
